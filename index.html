@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budget Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .result {
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Budget Calculator</h1>
+    <form method="post">
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" name="profession" required>
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" required>
+        <button type="submit">Calculate Budget</button>
+    </form>
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    {% if profession and salary %}
+        <div class="result">
+            <h2>Your Budget</h2>
+            <p>Profession: {{ profession }}</p>
+            <p>Salary: {{ salary }}</p>
+            <p>Housing: {{ housing_cost|round(2) }}</p>
+            <p>Transportation: {{ transportation_cost|round(2) }}</p>
+            <p>Food: {{ food_cost|round(2) }}</p>
+            <p>Healthcare: {{ healthcare_cost|round(2) }}</p>
+            <p>Debt Repayment: {{ debt_repayment_cost|round(2) }}</p>
+            <p>Savings/Investments: {{ savings_cost|round(2) }}</p>
+            <p>Discretionary Spending: {{ discretionary_cost|round(2) }}</p>
+            <p>Remaining for Savings: {{ remaining_savings|round(2) }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
