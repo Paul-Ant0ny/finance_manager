@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 
 app = Flask(__name__)
+model_testload = pickle.load(open('./models/random_forest.pkl','rb'))
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
